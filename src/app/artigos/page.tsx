@@ -1,8 +1,10 @@
+
 import Link from 'next/link';
-import { getArticlesMetadata, type Article } from '@/lib/articles';
+import { getArticlesMetadata } from '@/lib/articles';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { FileText, ArrowRight } from 'lucide-react';
+import { FileText, ArrowRight, BookOpen } from 'lucide-react';
+import Image from 'next/image';
 
 export default async function ArticlesPage() {
   const articlesMeta = await getArticlesMetadata();
@@ -11,10 +13,10 @@ export default async function ArticlesPage() {
     return (
       <section id="artigos" className="py-16 md:py-24 bg-background">
         <div className="container max-w-screen-lg mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary mb-12 font-headline">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-12 font-headline">
             Artigos
           </h2>
-          <p className="text-muted-foreground">Nenhum artigo encontrado.</p>
+          <p className="text-muted-foreground text-xl">Nenhum artigo encontrado no momento.</p>
         </div>
       </section>
     );
@@ -23,27 +25,44 @@ export default async function ArticlesPage() {
   return (
     <section id="artigos" className="py-16 md:py-24 bg-background">
       <div className="container max-w-screen-lg mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary mb-12 text-center font-headline">
-          Artigos
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
+          Artigos & Insights
         </h2>
-        <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-1">
+        <div className="grid gap-10 md:grid-cols-1">
           {articlesMeta.map((article) => (
-            <Card key={article.slug} className="shadow-lg hover:shadow-xl transition-shadow duration-300 border-border/50 flex flex-col">
-              <CardHeader className="flex flex-row items-start space-x-4">
-                <FileText className="h-6 w-6 text-primary mt-1 shrink-0" />
-                <div>
-                  <CardTitle className="text-xl text-primary font-semibold mb-1">{article.title}</CardTitle>
-                  <CardDescription className="text-foreground/70">{article.summary}</CardDescription>
+            <Link key={article.slug} href={`/artigos/${article.slug}`} passHref className="block group">
+              <Card className="bg-card border-border/70 rounded-xl shadow-xl tech-glow-hover card-border-accent-hover overflow-hidden flex flex-col md:flex-row h-full transition-all duration-300 ease-in-out hover:border-accent/80">
+                {article.coverImage && (
+                  <div className="md:w-1/3 w-full h-48 md:h-auto relative overflow-hidden">
+                    <Image
+                      src={article.coverImage}
+                      alt={article.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      data-ai-hint={article.coverImageHint}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                    />
+                  </div>
+                )}
+                <div className={`p-6 flex flex-col ${article.coverImage ? 'md:w-2/3' : 'w-full'}`}>
+                  <CardHeader className="p-0 mb-3">
+                    <div className="flex items-center text-sm text-accent mb-1">
+                      <BookOpen className="h-4 w-4 mr-2" />
+                      <span>Artigo</span>
+                    </div>
+                    <CardTitle className="text-2xl text-primary font-semibold group-hover:text-accent transition-colors duration-300">{article.title}</CardTitle>
+                  </CardHeader>
+                  <CardDescription className="text-foreground/75 leading-relaxed mb-4 flex-grow text-justify">
+                    {article.summary}
+                  </CardDescription>
+                  <CardContent className="p-0 mt-auto flex justify-end">
+                    <Button variant="link" className="text-accent group-hover:text-primary transition-colors duration-300 px-0">
+                      Ler artigo completo <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </CardContent>
                 </div>
-              </CardHeader>
-              <CardContent className="mt-auto flex justify-end">
-                <Button asChild variant="link" className="text-primary hover:text-accent">
-                  <Link href={`/artigos/${article.slug}`}>
-                    Ler artigo <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>

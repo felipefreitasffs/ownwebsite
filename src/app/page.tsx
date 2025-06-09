@@ -1,32 +1,44 @@
 
 import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { GraduationCap, Award, Briefcase } from 'lucide-react';
+import { GraduationCap, Award, Briefcase, Code2, Users, Brain, ShieldCheck } from 'lucide-react';
 import profile from '../images/me.jpg'
 
 const skillsData = {
-  "Liderança e Gestão": [
-    "Liderança Técnica e de Equipes Multidisciplinares",
-    "Formação Contratação e Mentoria de Engenheiros",
-    "Gestão de Projetos e Iniciativas de P&D/Inovação",
-    "Otimização de Processos (Agile e CI/CD)"
-  ],
-  "Arquitetura e Desenvolvimento": [
-    "Arquitetura de Sistemas Distribuídos Escaláveis",
-    "Design e Implementação de Microsserviços",
-    "Arquitetura Cloud-Native (AWS/GCP)",
-    "Princípios de Design",
-    "Modelagem de Dados"
-  ],
-  "Linguagens & Frameworks": [
-    "C#", "JavaScript", "Typescript", "SQL", "Python",
-    ".NET Core", "NodeJS", "ReactJS", "ReactNative", "VueJS"
-  ],
-  "DevOps & Observabilidade": [
-    "GitLab CI", "Github Actions", "ArgoCD",
-    "Elastic Stack", "Grafana", "Git", "Gitflow"
-  ]
+  "Liderança e Gestão": {
+    icon: Users,
+    skills: [
+      "Liderança Técnica e de Equipes Multidisciplinares",
+      "Formação Contratação e Mentoria de Engenheiros",
+      "Gestão de Projetos e Iniciativas de P&D/Inovação",
+      "Otimização de Processos (Agile e CI/CD)"
+    ]
+  },
+  "Arquitetura e Desenvolvimento": {
+    icon: Code2,
+    skills: [
+      "Arquitetura de Sistemas Distribuídos Escaláveis",
+      "Design e Implementação de Microsserviços",
+      "Arquitetura Cloud-Native (AWS/GCP)",
+      "Princípios de Design",
+      "Modelagem de Dados"
+    ]
+  },
+  "Linguagens & Frameworks": {
+    icon: Brain,
+    skills: [
+      "C#", "JavaScript", "Typescript", "SQL", "Python",
+      ".NET Core", "NodeJS", "ReactJS", "ReactNative", "VueJS"
+    ]
+  },
+  "DevOps & Observabilidade": {
+    icon: ShieldCheck,
+    skills: [
+      "GitLab CI", "Github Actions", "ArgoCD",
+      "Elastic Stack", "Grafana", "Git", "Gitflow"
+    ]
+  }
 };
 
 const academicFormations = [
@@ -43,94 +55,121 @@ const certifications = [
 
 export default function AboutPage() {
   return (
-    <section id="sobre" className="py-16 md:py-24 bg-background">
-      <div className="container max-w-screen-lg mx-auto px-4">
-        
-        <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center mb-16">
-          <div className="md:col-span-4 flex justify-center md:justify-start">
-            <Image
-              src={profile}
-              alt="Felipe Freitas"
-              width={300}
-              height={300}
-              className="rounded-full shadow-2xl object-cover aspect-square border-4 border-card"
-              data-ai-hint="profile person"
-              priority
-            />
-          </div>
-          <div className="md:col-span-8 text-center md:text-left">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-primary mb-4 font-headline">
-              Felipe Freitas
-            </h1>
-            <p className="text-xl md:text-2xl text-foreground/80 font-medium mb-6">
-            Tech Manager | Engineering Manager | Software Architect | Senior Software Engineer | Tech Specialist | AWS Certified
-            </p>
-          </div>
+    <div className="bg-background text-foreground">
+      {/* Hero Section */}
+      <section id="sobre-hero" className="py-20 md:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          {/* Subtle background pattern - placeholder, can be SVG or more complex */}
+          {/* <svg width="100%" height="100%"><pattern id="patt" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="hsl(var(--accent))"/></pattern><rect width="100%" height="100%" fill="url(#patt)"/></svg> */}
         </div>
-
-         <p className="text-lg text-foreground/70 max-w-full mx-auto leading-relaxed mb-16 text-justify">
-            Líder de Engenharia de Software com mais de 15 anos de experiência, combinando forte background técnico em arquitetura de software (Nuvem AWS/GCP, Microsserviços, Sistemas Distribuídos) com expertise em formar, contratar, mentorar e escalar equipes de engenharia de alta performance. Histórico comprovado em definir estratégias tecnológicas e padrões arquiteturais, otimizar a execução e entrega de projetos (CI/CD, Agile), fomentar cultura de inovação e melhoria contínua, e garantir o alinhamento entre tecnologia e objetivos de negócio.
-        </p>
-
-        <Card className="shadow-xl border-border/50 mb-16">
-          <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl text-center font-headline text-primary">Principais Habilidades</CardTitle>
-          </CardHeader>
-          <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-            {Object.entries(skillsData).map(([category, skills]) => (
-              <div key={category}>
-                <h3 className="text-lg font-semibold text-foreground mb-3">{category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="text-sm bg-accent/20 text-accent-foreground hover:bg-accent/40 px-3 py-1">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
+        <div className="container max-w-screen-xl mx-auto px-4 z-10">
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+            <div className="md:col-span-5 flex justify-center md:justify-start relative">
+              <div className="relative w-[280px] h-[280px] md:w-[320px] md:h-[320px] lg:w-[380px] lg:h-[380px] tech-glow-static rounded-full">
+                 <Image
+                    src={profile}
+                    alt="Felipe Freitas"
+                    width={380}
+                    height={380}
+                    className="rounded-full object-cover aspect-square border-4 border-card shadow-2xl"
+                    data-ai-hint="profile person"
+                    priority
+                  />
               </div>
-            ))}
-          </CardContent>
-        </Card>
-
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary mb-12 text-center font-headline">
-          Educação e Certificações
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card className="shadow-lg border-border/50 transform hover:scale-105 transition-transform duration-300">
-            <CardHeader className="flex flex-row items-center space-x-3 pb-3">
-              <GraduationCap className="h-8 w-8 text-primary" />
-              <CardTitle className="text-xl text-primary font-semibold">Formação Acadêmica</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3 list-none text-foreground/70">
-                {academicFormations.map((formation, index) => (
-                  <li key={index} className="flex items-start">
-                    <Briefcase className="h-5 w-5 text-accent mr-3 mt-1 shrink-0" />
-                    <span>{formation}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="shadow-lg border-border/50 transform hover:scale-105 transition-transform duration-300">
-            <CardHeader className="flex flex-row items-center space-x-3 pb-3">
-              <Award className="h-8 w-8 text-primary" />
-              <CardTitle className="text-xl text-primary font-semibold">Certificações</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3 list-none text-foreground/70">
-                {certifications.map((certification, index) => (
-                   <li key={index} className="flex items-start">
-                    <Award className="h-5 w-5 text-accent mr-3 mt-1 shrink-0" />
-                    <span>{certification}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+            </div>
+            <div className="md:col-span-7 text-center md:text-left">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-primary mb-6 font-headline leading-tight">
+                Felipe Freitas
+              </h1>
+              <p className="text-xl md:text-2xl lg:text-3xl text-foreground/80 font-medium mb-8 leading-relaxed">
+                Tech Manager | Engineering Manager | Software Architect | Senior Software Engineer | AWS Certified
+              </p>
+               <p className="text-lg text-foreground/70 max-w-xl mx-auto md:mx-0 leading-relaxed text-justify">
+                Líder de Engenharia de Software com mais de 15 anos de experiência, combinando forte background técnico em arquitetura de software (Nuvem AWS/GCP, Microsserviços, Sistemas Distribuídos) com expertise em formar, contratar, mentorar e escalar equipes de engenharia de alta performance. Histórico comprovado em definir estratégias tecnológicas e padrões arquiteturais, otimizar a execução e entrega de projetos (CI/CD, Agile), fomentar cultura de inovação e melhoria contínua, e garantir o alinhamento entre tecnologia e objetivos de negócio.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Skills Section */}
+      <section id="habilidades" className="py-16 md:py-24">
+        <div className="container max-w-screen-lg mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
+            Principais Habilidades
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {Object.entries(skillsData).map(([category, data]) => {
+              const CategoryIcon = data.icon;
+              return (
+                <Card key={category} className="bg-card border-border/70 p-6 rounded-xl shadow-xl tech-glow-hover card-border-accent-hover">
+                  <CardHeader className="flex flex-row items-center space-x-4 pb-4 p-0 mb-4">
+                    <CategoryIcon className="h-10 w-10 text-accent" />
+                    <CardTitle className="text-2xl text-primary font-semibold">{category}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="flex flex-wrap gap-3">
+                      {data.skills.map((skill) => (
+                        <Badge
+                          key={skill}
+                          variant="secondary"
+                          className="text-md bg-accent/10 text-accent-foreground hover:bg-accent/20 px-4 py-2 rounded-lg border border-accent/30"
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Education and Certifications Section */}
+      <section id="educacao" className="py-16 md:py-24 bg-card/50">
+        <div className="container max-w-screen-lg mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
+            Educação e Certificações
+          </h2>
+          <div className="grid md:grid-cols-2 gap-10">
+            <Card className="bg-card border-border/70 p-6 rounded-xl shadow-xl tech-glow-hover card-border-accent-hover">
+              <CardHeader className="flex flex-row items-center space-x-4 pb-4 p-0 mb-6">
+                <GraduationCap className="h-10 w-10 text-accent" />
+                <CardTitle className="text-2xl text-primary font-semibold">Formação Acadêmica</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <ul className="space-y-4 list-none text-foreground/80">
+                  {academicFormations.map((formation, index) => (
+                    <li key={index} className="flex items-start text-lg">
+                      <Briefcase className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" />
+                      <span>{formation}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-border/70 p-6 rounded-xl shadow-xl tech-glow-hover card-border-accent-hover">
+              <CardHeader className="flex flex-row items-center space-x-4 pb-4 p-0 mb-6">
+                <Award className="h-10 w-10 text-accent" />
+                <CardTitle className="text-2xl text-primary font-semibold">Certificações</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <ul className="space-y-4 list-none text-foreground/80">
+                  {certifications.map((certification, index) => (
+                    <li key={index} className="flex items-start text-lg">
+                      <Award className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" />
+                      <span>{certification}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

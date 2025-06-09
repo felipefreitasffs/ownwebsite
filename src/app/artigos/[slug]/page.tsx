@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, CalendarDays, UserCircle } from 'lucide-react';
 
 type ArticlePageProps = {
   params: {
@@ -27,9 +27,26 @@ export async function generateMetadata({ params }: ArticlePageProps) {
     };
   }
   return {
-    title: article.title,
+    title: `${article.title} | Felipe Freitas`,
     description: article.summary,
     openGraph: {
+      title: article.title,
+      description: article.summary,
+      images: [
+        {
+          url: article.coverImage,
+          width: 800,
+          height: 400,
+          alt: article.title,
+        },
+      ],
+      type: 'article',
+      authors: ['Felipe Freitas'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.summary,
       images: [article.coverImage],
     },
   };
@@ -42,11 +59,19 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound();
   }
 
+  // Placeholder for publish date - you might want to add this to your article data
+  const publishDate = new Date().toLocaleDateString('pt-BR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+
   return (
     <section className="py-12 md:py-20 bg-background">
       <div className="container max-w-screen-md mx-auto px-4">
-        <div className="mb-8">
-          <Button asChild variant="outline" size="sm">
+        <div className="mb-10">
+          <Button asChild variant="outline" size="sm" className="border-accent/50 text-accent hover:bg-accent/10 hover:text-accent-foreground tech-glow-hover">
             <Link href="/artigos">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Voltar para Artigos
@@ -54,36 +79,48 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </Button>
         </div>
         <article>
-          <header className="mb-8">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-primary mb-4 font-headline leading-tight">
-              {article.title}
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-6">{article.summary}</p>
+          <header className="mb-10">
             {article.coverImage && (
-              <div className="mb-8 overflow-hidden rounded-lg shadow-xl">
+              <div className="mb-8 overflow-hidden rounded-xl shadow-2xl tech-glow-static aspect-[16/9] relative">
                 <Image
                   src={article.coverImage}
                   alt={article.title}
-                  width={800}
-                  height={400}
-                  className="w-full h-auto object-cover aspect-[2/1]"
+                  fill
+                  className="w-full h-full object-cover"
                   data-ai-hint={article.coverImageHint}
                   priority
+                  sizes="(max-width: 768px) 100vw, 800px"
                 />
               </div>
             )}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-primary mb-6 font-headline leading-tight">
+              {article.title}
+            </h1>
+            <div className="flex flex-wrap items-center text-muted-foreground text-sm space-x-4 mb-6">
+              <div className="flex items-center">
+                <UserCircle className="h-4 w-4 mr-1.5 text-accent" />
+                <span>Felipe Freitas</span>
+              </div>
+              <div className="flex items-center">
+                <CalendarDays className="h-4 w-4 mr-1.5 text-accent" />
+                <span>{publishDate}</span>
+              </div>
+            </div>
+            <p className="text-lg md:text-xl text-foreground/80 mb-8 italic">{article.summary}</p>
+             <hr className="border-border/30 my-8" />
           </header>
+          
           <div
             className="prose prose-lg dark:prose-invert max-w-none 
-                       prose-headings:font-headline prose-headings:text-primary prose-headings:tracking-tight
-                       prose-p:text-foreground/80 prose-p:leading-relaxed
-                       prose-strong:text-foreground/90
-                       prose-a:text-accent prose-a:no-underline hover:prose-a:underline
-                       prose-ul:list-disc prose-ul:pl-6 prose-ul:text-foreground/80
-                       prose-ol:list-decimal prose-ol:pl-6 prose-ol:text-foreground/80
-                       prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-muted-foreground
-                       prose-code:bg-muted prose-code:text-accent-foreground prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-code
-                       prose-pre:bg-muted prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto
+                       prose-headings:font-headline prose-headings:text-primary prose-headings:tracking-tight prose-headings:mb-4 prose-headings:mt-10
+                       prose-p:text-foreground/80 prose-p:leading-relaxed prose-p:text-justify
+                       prose-strong:text-foreground/95 prose-strong:font-semibold
+                       prose-a:text-accent prose-a:font-medium prose-a:no-underline hover:prose-a:underline hover:prose-a:text-primary
+                       prose-ul:list-disc prose-ul:pl-6 prose-ul:text-foreground/80 prose-li:my-1
+                       prose-ol:list-decimal prose-ol:pl-6 prose-ol:text-foreground/80 prose-li:my-1
+                       prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-muted-foreground prose-blockquote:my-6
+                       prose-code:bg-card prose-code:text-accent prose-code:px-1.5 prose-code:py-1 prose-code:rounded-md prose-code:font-code prose-code:text-sm
+                       prose-pre:bg-card prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:shadow-md prose-pre:my-6
                        "
             style={{ whiteSpace: 'pre-line' }} 
           >

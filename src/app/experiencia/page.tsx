@@ -1,5 +1,6 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase } from 'lucide-react';
+import { Briefcase, Building } from 'lucide-react';
 
 const experiences = [
   {
@@ -44,25 +45,28 @@ export default function ExperiencePage() {
   return (
     <section id="experiencia" className="py-16 md:py-24 bg-background">
       <div className="container max-w-screen-lg mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-primary mb-12 text-center font-headline">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
           Experiência Profissional
         </h2>
-        <div className="space-y-8">
+        <div className="space-y-10">
           {experiences.map((exp, index) => (
-            <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300 border-border/50">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <CardTitle className="text-xl text-primary font-semibold">{exp.role}</CardTitle>
-                    <CardDescription className="text-md text-foreground/80">{exp.company}</CardDescription>
+            <Card key={index} className="bg-card border-border/70 p-6 rounded-xl shadow-xl tech-glow-hover card-border-accent-hover overflow-hidden">
+              <CardHeader className="p-0 mb-4">
+                <div className="flex flex-col sm:flex-row items-start justify-between mb-2">
+                  <div className="mb-2 sm:mb-0">
+                    <CardTitle className="text-2xl text-primary font-semibold">{exp.role}</CardTitle>
+                    <div className="flex items-center text-md text-foreground/80 mt-1">
+                      <Building className="h-5 w-5 mr-2 text-accent shrink-0" />
+                      {exp.company}
+                    </div>
                   </div>
-                  <div className="text-sm text-muted-foreground whitespace-nowrap ml-4">
-                    <Briefcase className="inline-block h-4 w-4 mr-1 text-primary" />{exp.period}
+                  <div className="text-sm text-muted-foreground whitespace-nowrap bg-muted px-3 py-1 rounded-md flex items-center">
+                    <Briefcase className="inline-block h-4 w-4 mr-2 text-accent" />{exp.period}
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-foreground/70 leading-relaxed">{exp.description}</p>
+              <CardContent className="p-0">
+                <p className="text-foreground/75 leading-relaxed text-justify">{exp.description}</p>
               </CardContent>
             </Card>
           ))}

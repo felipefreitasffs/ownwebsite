@@ -8,75 +8,69 @@ html {
 }
 
 body {
-  font-family: 'Inter', Arial, Helvetica, sans-serif; /* Changed default to Inter as per layout */
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 @layer base {
   :root {
-    --background: 210 10% 10%; /* Darker Charcoal Blue */
-    --foreground: 210 15% 92%; /* Slightly Brighter Light Grey */
-    --card: 210 10% 15%; /* Dark Charcoal for Cards */
-    --card-foreground: 210 15% 92%; 
-    --popover: 210 10% 12%;
-    --popover-foreground: 210 15% 92%;
-    --primary: 195 75% 50%; /* Petrol Blue - slightly more vibrant */
-    --primary-foreground: 200 100% 96%; 
-    --secondary: 195 45% 35%; /* Muted Petrol Blue */
-    --secondary-foreground: 210 15% 85%;
-    --muted: 210 10% 22%; /* Muted Grey */
-    --muted-foreground: 210 15% 70%; 
-    --accent: 180 70% 60%; /* Bright Teal/Cyan Accent */
-    --accent-foreground: 210 10% 8%; 
-    --destructive: 0 70% 55%;
+    --background: 220 25% 8%; /* Even Darker Cool Grey/Blue */
+    --foreground: 210 20% 94%; /* Bright Light Grey for high contrast */
+    --card: 220 25% 12%; /* Dark, sleek card background */
+    --card-foreground: 210 20% 94%;
+    --popover: 220 25% 10%; /* Darker popover */
+    --popover-foreground: 210 20% 94%;
+    --primary: 195 85% 50%; /* Vibrant Petrol Blue */
+    --primary-foreground: 200 100% 97%; 
+    --secondary: 195 50% 38%; /* Muted Petrol Blue */
+    --secondary-foreground: 210 20% 90%;
+    --muted: 220 20% 25%; /* Muted Grey - for less emphasis */
+    --muted-foreground: 210 15% 75%; 
+    --accent: 175 90% 45%; /* Electric Teal/Cyan - for glow and highlights */
+    --accent-foreground: 220 25% 10%; /* Dark foreground for on-accent text */
+    --destructive: 0 75% 58%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 10% 25%; /* Subtle Dark Border */
-    --input: 210 10% 20%; /* Input Background */
-    --ring: 195 75% 55%; /* Petrol Blue for rings */
-    --chart-1: 195 75% 50%;
-    --chart-2: 180 70% 60%;
-    --chart-3: 210 30% 65%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.8rem; /* Slightly increased Material 3 inspired radius */
-    --sidebar-background: 210 10% 8%;
-    --sidebar-foreground: 210 15% 88%;
-    --sidebar-primary: 195 75% 55%;
+    --border: 220 20% 30%; /* Subtle border, can be accented on hover */
+    --input: 220 20% 18%; /* Input Background */
+    --ring: 175 90% 50%; /* Ring color based on accent */
+    --chart-1: 195 85% 50%;
+    --chart-2: 175 90% 45%;
+    --chart-3: 210 40% 70%;
+    --chart-4: 43 80% 60%;
+    --chart-5: 27 90% 60%;
+    --radius: 0.8rem; /* Consistent radius */
+    
+    /* Sidebar specific colors (can inherit or be distinct) */
+    --sidebar-background: 220 25% 6%; /* Very dark sidebar */
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 195 85% 55%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 210 10% 18%;
-    --sidebar-accent-foreground: 210 15% 92%;
-    --sidebar-border: 210 10% 22%;
-    --sidebar-ring: 195 75% 60%;
+    --sidebar-accent: 220 25% 20%; /* Sidebar accent area */
+    --sidebar-accent-foreground: 210 20% 94%;
+    --sidebar-border: 220 20% 28%;
+    --sidebar-ring: 175 90% 55%;
   }
 
   .dark {
-    /* Keeping dark theme consistent with the new base */
-    --background: 210 10% 10%;
-    --foreground: 210 15% 92%;
-    --card: 210 10% 15%;
-    --card-foreground: 210 15% 92%;
-    --popover: 210 10% 12%;
-    --popover-foreground: 210 15% 92%;
-    --primary: 195 75% 55%; /* Slightly brighter primary for dark */
-    --primary-foreground: 200 100% 96%;
-    --secondary: 195 45% 40%;
-    --secondary-foreground: 210 15% 85%;
-    --muted: 210 10% 22%;
-    --muted-foreground: 210 15% 70%;
-    --accent: 180 70% 65%; /* Slightly brighter accent for dark */
-    --accent-foreground: 210 10% 8%;
-    --destructive: 0 65% 50%;
+    /* Ensure dark theme vars match the new root if not identical */
+    --background: 220 25% 8%;
+    --foreground: 210 20% 94%;
+    --card: 220 25% 12%;
+    --card-foreground: 210 20% 94%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 210 20% 94%;
+    --primary: 195 85% 50%;
+    --primary-foreground: 200 100% 97%;
+    --secondary: 195 50% 38%;
+    --secondary-foreground: 210 20% 90%;
+    --muted: 220 20% 25%;
+    --muted-foreground: 210 15% 75%;
+    --accent: 175 90% 45%;
+    --accent-foreground: 220 25% 10%;
+    --destructive: 0 75% 58%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 10% 25%;
-    --input: 210 10% 20%;
-    --ring: 195 75% 60%;
-    --sidebar-background: 210 10% 8%;
-    --sidebar-foreground: 210 15% 88%;
-    --sidebar-primary: 195 75% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 10% 18%;
-    --sidebar-accent-foreground: 210 15% 92%;
-    --sidebar-border: 210 10% 22%;
-    --sidebar-ring: 195 75% 60%;
+    --border: 220 20% 30%;
+    --input: 220 20% 18%;
+    --ring: 175 90% 50%;
   }
 }
 
@@ -90,43 +84,64 @@ body {
   }
   /* Custom prose styling to match the theme */
   .prose {
-    --tw-prose-body: hsl(var(--foreground) / 0.8);
+    --tw-prose-body: hsl(var(--foreground) / 0.85);
     --tw-prose-headings: hsl(var(--primary));
     --tw-prose-lead: hsl(var(--muted-foreground));
     --tw-prose-links: hsl(var(--accent));
     --tw-prose-bold: hsl(var(--foreground));
     --tw-prose-counters: hsl(var(--muted-foreground));
-    --tw-prose-bullets: hsl(var(--muted-foreground));
-    --tw-prose-hr: hsl(var(--border));
+    --tw-prose-bullets: hsl(var(--accent) / 0.7);
+    --tw-prose-hr: hsl(var(--border) / 0.5);
     --tw-prose-quotes: hsl(var(--muted-foreground));
     --tw-prose-quote-borders: hsl(var(--accent));
     --tw-prose-captions: hsl(var(--muted-foreground));
-    --tw-prose-code: hsl(var(--accent-foreground));
-    --tw-prose-pre-code: hsl(var(--accent-foreground));
-    --tw-prose-pre-bg: hsl(var(--muted));
+    --tw-prose-code: hsl(var(--accent)); /* Make code stand out more */
+    --tw-prose-pre-code: hsl(var(--foreground) / 0.9);
+    --tw-prose-pre-bg: hsl(var(--background) / 0.5); /* Slightly different background for code blocks */
     --tw-prose-th-borders: hsl(var(--border));
     --tw-prose-td-borders: hsl(var(--border));
 
-    --tw-prose-invert-body: hsl(var(--foreground) / 0.8);
+    /* Invert for dark mode (already dark by default, but good practice) */
+    --tw-prose-invert-body: hsl(var(--foreground) / 0.85);
     --tw-prose-invert-headings: hsl(var(--primary));
     --tw-prose-invert-lead: hsl(var(--muted-foreground));
     --tw-prose-invert-links: hsl(var(--accent));
     --tw-prose-invert-bold: hsl(var(--foreground));
     --tw-prose-invert-counters: hsl(var(--muted-foreground));
-    --tw-prose-invert-bullets: hsl(var(--muted-foreground));
-    --tw-prose-invert-hr: hsl(var(--border));
+    --tw-prose-invert-bullets: hsl(var(--accent) / 0.7);
+    --tw-prose-invert-hr: hsl(var(--border) / 0.5);
     --tw-prose-invert-quotes: hsl(var(--muted-foreground));
     --tw-prose-invert-quote-borders: hsl(var(--accent));
     --tw-prose-invert-captions: hsl(var(--muted-foreground));
-    --tw-prose-invert-code: hsl(var(--accent-foreground));
-    --tw-prose-invert-pre-code: hsl(var(--accent-foreground));
-    --tw-prose-invert-pre-bg: hsl(var(--muted));
+    --tw-prose-invert-code: hsl(var(--accent));
+    --tw-prose-invert-pre-code: hsl(var(--foreground) / 0.9);
+    --tw-prose-invert-pre-bg: hsl(var(--background) / 0.5); 
     --tw-prose-invert-th-borders: hsl(var(--border));
     --tw-prose-invert-td-borders: hsl(var(--border));
   }
 }
 
-/* Specific font for code if needed, otherwise Inter handles it */
 .font-code {
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+/* Custom glow effect */
+.tech-glow-hover {
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.tech-glow-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px hsl(var(--accent) / 0.5), 0 0 5px hsl(var(--accent) / 0.3);
+}
+
+.tech-glow-static {
+   box-shadow: 0 0 15px hsl(var(--accent) / 0.3), 0 0 5px hsl(var(--accent) / 0.2);
+}
+
+.card-border-accent-hover {
+  border-color: hsl(var(--border));
+  transition: border-color 0.3s ease-in-out;
+}
+.card-border-accent-hover:hover {
+  border-color: hsl(var(--accent) / 0.7);
 }
