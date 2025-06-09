@@ -1,3 +1,4 @@
+
 // Corresponds to src/articles/separando-deploy-release.md
 const article1Content = `
 No mundo ágil do desenvolvimento de software, a velocidade é essencial. Mas como podemos entregar valor aos nossos clientes de forma rápida e contínua sem comprometer a estabilidade e a segurança das nossas aplicações? A resposta está em desacoplar duas atividades que muitas vezes são tratadas como uma só: o deploy e o release.
@@ -33,7 +34,7 @@ Modernizar um sistema monolítico legado é um dos maiores desafios da engenhari
 Na minha experiência como Head de Engenharia na Diel Energia, enfrentei exatamente esse desafio. A solução foi o padrão **Strangler Fig (Figueira Estranguladora)**, popularizado por Martin Fowler.
 
 **O que é o Padrão Strangler Fig?**
-A inspiração vem da natureza: uma figueira que cresce em volta de uma árvore hospedeira, eventualmente a envolvendo por completo e se tornando a estrutura dominante. No software, a ideia é construir a nova aplicação (os "galhos" da figueira) em volta do sistema legado (a "árvore"), gradualmente substituindo suas funcionalidades até que o sistema antigo possa ser desativado.
+A inspiração vem da natureza: uma figueira que cresce em volta de uma árvore hospedeira, eventually a envolvendo por completo e se tornando a estrutura dominante. No software, a ideia é construir a nova aplicação (os "galhos" da figueira) em volta do sistema legado (a "árvore"), gradualmente substituindo suas funcionalidades até que o sistema antigo possa ser desativado.
 
 **Nossa Abordagem na Prática:**
 1.  **Proxy de Roteamento (API Gateway):** O primeiro passo foi colocar um proxy na frente do nosso monolito. Todas as chamadas que antes iam direto para o sistema legado passaram a ser interceptadas por esse proxy. Inicialmente, ele apenas repassava 100% do tráfego.
@@ -83,6 +84,8 @@ export type Article = {
   title: string;
   summary: string;
   content: string;
+  coverImage: string;
+  coverImageHint: string;
 };
 
 const articlesData: Article[] = [
@@ -91,35 +94,35 @@ const articlesData: Article[] = [
     title: 'Separando o Deploy do Release: Como Entregar Valor com Mais Segurança e Agilidade',
     summary: 'Aprenda a diferença crucial entre deploy e release e como Feature Flags podem transformar seu processo de desenvolvimento.',
     content: article1Content,
+    coverImage: 'https://placehold.co/800x400.png',
+    coverImageHint: 'abstract concept',
   },
   {
     slug: 'modernizando-monolitos',
     title: 'Modernizando Plataformas Monolíticas: Minha Jornada com o Pattern Strangler Fig',
     summary: 'Descubra como o padrão Strangler Fig permitiu a modernização de uma plataforma complexa na Diel Energia.',
     content: article2Content,
+    coverImage: 'https://placehold.co/800x400.png',
+    coverImageHint: 'architecture software',
   },
   {
     slug: 'personal-trainer-ia',
     title: "Construindo um 'Personal Trainer' com IA (No-Code): Estudo de Caso com Glide e OpenAI",
     summary: 'Um estudo de caso prático sobre como integrei a API da OpenAI com a plataforma no-code Glideapps para criar um aplicativo funcional.',
     content: article3Content,
+    coverImage: 'https://placehold.co/800x400.png',
+    coverImageHint: 'ai fitness',
   },
 ];
 
-// Simulates fetching all articles' metadata (slug, title, summary)
 export async function getArticlesMetadata(): Promise<Omit<Article, 'content'>[]> {
-  // In a real scenario with .md files, this would involve reading directory and parsing frontmatter
   return articlesData.map(({ content, ...meta }) => meta);
 }
 
-// Simulates fetching a single article by its slug, including content
 export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
-  // In a real scenario, this would involve reading a specific .md file and parsing it
   return articlesData.find(article => article.slug === slug);
 }
 
-// This function is kept for conceptual completeness but won't be used in the current simplified article display.
-// If individual article pages were implemented, it would be necessary.
 export async function getAllArticles(): Promise<Article[]> {
   return articlesData;
 }
