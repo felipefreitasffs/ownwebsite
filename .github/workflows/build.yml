@@ -4,7 +4,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main # Adjust if your main branch has a different name (e.g., master)
+      - master # Adjust if your main branch has a different name (e.g., master)
 
 jobs:
   build_and_push:
