@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { GraduationCap, Award, Briefcase } from 'lucide-react';
+import profile from '../images/me.jpg'
 
 const skillsData = {
   "Liderança e Gestão": [
@@ -29,6 +30,7 @@ const skillsData = {
 };
 
 const academicFormations = [
+  "Head de Tecnologia 5.0 (Strides Tech Community, 2025)",
   "Data Analytics (Pós, FIAP, 2024-2025)",
   "Distributed Systems Architecture (Pós, PUC-Minas, 2016-2018)",
   "Software Engineering (Pós, Faculdade Pitágoras, 2013-2015)",
@@ -47,7 +49,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center mb-16">
           <div className="md:col-span-4 flex justify-center md:justify-start">
             <Image
-              src="https://placehold.co/300x300.png"
+              src={profile}
               alt="Felipe Freitas"
               width={300}
               height={300}
@@ -61,7 +63,7 @@ export default function AboutPage() {
               Felipe Freitas
             </h1>
             <p className="text-xl md:text-2xl text-foreground/80 font-medium mb-6">
-              Software Engineering | Engineering Manager | Software Architect
+            Tech Manager | Engineering Manager | Software Architect | Senior Software Engineer | Tech Specialist | AWS Certified
             </p>
           </div>
         </div>

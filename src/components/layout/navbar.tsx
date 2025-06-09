@@ -13,7 +13,7 @@ const navItems = [
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
+      <div className="container flex h-16 max-w-screen-2xl items-center justify-between pl-5 pr-5">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <span className="font-bold text-primary sm:inline-block text-lg">
             Felipe Freitas
