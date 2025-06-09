@@ -1,7 +1,9 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Adicione esta linha para corrigir o build
+  output: 'standalone',
+
   typescript: {
     ignoreBuildErrors: true,
   },
