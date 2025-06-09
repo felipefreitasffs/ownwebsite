@@ -21,29 +21,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm' # Configure caching for pnpm based on pnpm-lock.yaml
+          cache: 'npm' # Configure caching for npm based on package-lock.json
 
-      - name: Install pnpm
-        run: npm install -g pnpm@8
+      - name: Install dependencies with npm
+        run: npm ci # Use npm ci for clean installs
         shell: bash
-
-      - name: Check pnpm version and PATH
-        run: |
-          echo "pnpm version:"
-          pnpm --version
-          echo "which pnpm:"
-          which pnpm
-          echo "Current PATH:"
-          echo $PATH
-        shell: bash
-
-      - name: Install dependencies with pnpm
-        run: pnpm install --frozen-lockfile
-        shell: bash
-        # Ensure pnpm-lock.yaml is committed to your repository.
+        # Ensure package-lock.json is committed to your repository.
 
       - name: Build Next.js app (optional pre-check)
-        run: pnpm run build # This uses the script from package.json, which calls `next build`
+        run: npm run build # This uses the script from package.json
         env:
           NEXT_TELEMETRY_DISABLED: 1
         shell: bash

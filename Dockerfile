@@ -1,21 +1,23 @@
 
-# Stage 1: Build stage
-FROM node:20-alpine AS builder
+# Stage 1: Builder
+FROM node:20-slim AS builder
+
+# Set working directory
 WORKDIR /app
 
-# Install dependencies
-COPY package*.json ./
-# Using npm ci for cleaner, reproducible builds
+# Set NEXT_TELEMETRY_DISABLED
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Copy package.json and package-lock.json (or npm-shrinkwrap.json)
+COPY package.json package-lock.json* ./
+
+# Install dependencies using npm ci
 RUN npm ci
 
-# Copy the rest of the application code
+# Copy the rest of the application source code
 COPY . .
 
-# Set environment variable for telemetry for the build
-ENV NEXT_TELEMETRY_DISABLED=1
 # Build the Next.js application
-# The `output: 'standalone'` in next.config.ts will ensure
-# a minimal server and assets are in .next/standalone
 RUN npm run build
 
 # Verify that the standalone directory was created
@@ -26,25 +28,25 @@ RUN if [ ! -d ".next/standalone" ]; then \
       exit 1; \
     fi
 
-# Stage 2: Production stage
-FROM node:20-alpine AS runner
+# Stage 2: Runner
+FROM node:20-slim AS runner
+
 WORKDIR /app
 
 ENV NODE_ENV=production
-# ENV PORT=3000 # Next.js default port is 3000
+ENV NEXT_TELEMETRY_DISABLED=1
 
-# Copy the standalone output from the builder stage.
-# This single COPY command should bring everything needed:
-# server.js, .next/static, .next/server, and the 'public' folder (if it exists and was processed by the build).
+# Copy only the necessary files from the builder stage
 COPY --from=builder /app/.next/standalone ./
+# The public folder assets are typically served by Next.js itself or are bundled
+# into .next/static which is part of the standalone output.
+# If you have specific assets in public that need to be at the root,
+# you might need to copy them, but typically .next/standalone handles this.
 
-# Expose the port the app runs on
 EXPOSE 3000
 
-# Optional: Run as a non-root user for security.
-# Ensure 'nextjs' user and 'nodejs' group exist or create them.
-# Example: RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs --ingroup nodejs
-# USER nextjs
+ENV PORT=3000
 
-# Command to run the application using the standalone server.js
+# Start the Next.js application
+# The standalone output includes a server.js file
 CMD ["node", "server.js"]
