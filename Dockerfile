@@ -1,26 +1,29 @@
+# Dockerfile
 
-# Stage 1: Builder
-FROM node:20-slim AS builder
-
-# Set working directory
+# Builder stage: Build the Next.js application
+FROM node:20-bookworm-slim AS builder
 WORKDIR /app
 
-# Set NEXT_TELEMETRY_DISABLED
+# Set NEXT_TELEMETRY_DISABLED to 1 to disable telemetry during build
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Copy package.json and package-lock.json (or npm-shrinkwrap.json)
-COPY package.json package-lock.json* ./
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
 # Install dependencies using npm ci
+# This uses package-lock.json for reproducible builds
 RUN npm ci
 
-# Copy the rest of the application source code
+# Copy the rest of the application code
 COPY . .
 
 # Build the Next.js application
+# The build script is defined in package.json (e.g., "next build")
+# Ensure your next.config.js has output: 'standalone'
 RUN npm run build
 
 # Verify that the standalone directory was created
+# If this fails, the build didn't produce the expected output
 RUN if [ ! -d ".next/standalone" ]; then \
       echo "ERROR: .next/standalone directory not found after build." >&2; \
       echo "Contents of .next directory:" >&2; \
@@ -28,25 +31,25 @@ RUN if [ ! -d ".next/standalone" ]; then \
       exit 1; \
     fi
 
-# Stage 2: Runner
-FROM node:20-slim AS runner
-
+# Runner stage: Create the final lightweight image
+FROM node:20-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV=production
+# Set NEXT_TELEMETRY_DISABLED to 1 to disable telemetry in production
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+# Uncomment the following line if you use a custom port
+# ENV PORT=3000
 
-# Copy only the necessary files from the builder stage
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder /app/.next/standalone ./
-# The public folder assets are typically served by Next.js itself or are bundled
-# into .next/static which is part of the standalone output.
-# If you have specific assets in public that need to be at the root,
-# you might need to copy them, but typically .next/standalone handles this.
+# The public folder is typically included in .next/standalone with output: 'standalone'
+# If you have specific needs for it to be separate, ensure it's handled correctly by 'standalone' or adjust.
+# COPY --from=builder /app/public ./public
 
 EXPOSE 3000
 
-ENV PORT=3000
-
 # Start the Next.js application
-# The standalone output includes a server.js file
+# The server.js file is part of the standalone output
 CMD ["node", "server.js"]
