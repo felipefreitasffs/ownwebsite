@@ -86,6 +86,7 @@ export type Article = {
   content: string;
   coverImage: string;
   coverImageHint: string;
+  publishDate: string; // YYYY-MM-DD
 };
 
 const articlesData: Article[] = [
@@ -96,6 +97,7 @@ const articlesData: Article[] = [
     content: article1Content,
     coverImage: 'https://placehold.co/800x400.png',
     coverImageHint: 'abstract concept',
+    publishDate: '2023-11-15',
   },
   {
     slug: 'modernizando-monolitos',
@@ -104,6 +106,7 @@ const articlesData: Article[] = [
     content: article2Content,
     coverImage: 'https://placehold.co/800x400.png',
     coverImageHint: 'architecture software',
+    publishDate: '2024-01-20',
   },
   {
     slug: 'personal-trainer-ia',
@@ -112,11 +115,15 @@ const articlesData: Article[] = [
     content: article3Content,
     coverImage: 'https://placehold.co/800x400.png',
     coverImageHint: 'ai fitness',
+    publishDate: '2023-09-05',
   },
 ];
 
 export async function getArticlesMetadata(): Promise<Omit<Article, 'content'>[]> {
-  return articlesData.map(({ content, ...meta }) => meta);
+  const sortedArticles = articlesData.sort((a, b) => {
+    return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
+  });
+  return sortedArticles.map(({ content, ...meta }) => meta);
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | undefined> {
@@ -124,5 +131,8 @@ export async function getArticleBySlug(slug: string): Promise<Article | undefine
 }
 
 export async function getAllArticles(): Promise<Article[]> {
-  return articlesData;
+  const sortedArticles = articlesData.sort((a, b) => {
+    return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
+  });
+  return sortedArticles;
 }

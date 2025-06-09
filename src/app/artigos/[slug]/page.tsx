@@ -42,6 +42,7 @@ export async function generateMetadata({ params }: ArticlePageProps) {
       ],
       type: 'article',
       authors: ['Felipe Freitas'],
+      publishedTime: new Date(article.publishDate).toISOString(),
     },
     twitter: {
       card: 'summary_large_image',
@@ -59,8 +60,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound();
   }
 
-  // Placeholder for publish date - you might want to add this to your article data
-  const publishDate = new Date().toLocaleDateString('pt-BR', {
+  const publishDateFormatted = new Date(article.publishDate).toLocaleDateString('pt-BR', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -103,7 +103,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               </div>
               <div className="flex items-center">
                 <CalendarDays className="h-4 w-4 mr-1.5 text-accent" />
-                <span>{publishDate}</span>
+                <span>{publishDateFormatted}</span>
               </div>
             </div>
             <p className="text-lg md:text-xl text-foreground/80 mb-8 italic">{article.summary}</p>

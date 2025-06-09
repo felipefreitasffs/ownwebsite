@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getArticlesMetadata } from '@/lib/articles';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { FileText, ArrowRight, BookOpen } from 'lucide-react';
+import { FileText, ArrowRight, BookOpen, CalendarDays } from 'lucide-react';
 import Image from 'next/image';
 
 export default async function ArticlesPage() {
@@ -46,9 +46,21 @@ export default async function ArticlesPage() {
                 )}
                 <div className={`p-6 flex flex-col ${article.coverImage ? 'md:w-2/3' : 'w-full'}`}>
                   <CardHeader className="p-0 mb-3">
-                    <div className="flex items-center text-sm text-accent mb-1">
-                      <BookOpen className="h-4 w-4 mr-2" />
-                      <span>Artigo</span>
+                    <div className="flex items-center justify-between text-sm text-accent mb-2">
+                      <div className="flex items-center">
+                        <BookOpen className="h-4 w-4 mr-2" />
+                        <span>Artigo</span>
+                      </div>
+                      <div className="flex items-center text-muted-foreground">
+                        <CalendarDays className="h-4 w-4 mr-1.5 text-accent" />
+                        <span>
+                          {new Date(article.publishDate).toLocaleDateString('pt-BR', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })}
+                        </span>
+                      </div>
                     </div>
                     <CardTitle className="text-2xl text-primary font-semibold group-hover:text-accent transition-colors duration-300">{article.title}</CardTitle>
                   </CardHeader>
