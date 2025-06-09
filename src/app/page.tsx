@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { GraduationCap, Award, Briefcase, Code2, Users, Brain, ShieldCheck } from 'lucide-react';
-import profile from '../images/me.jpg'
 
 const skillsData = {
   "Liderança e Gestão": {
@@ -66,7 +65,7 @@ export default function AboutPage() {
             <div className="md:col-span-5 flex justify-center md:justify-start relative">
               <div className="relative w-[280px] h-[280px] md:w-[320px] md:h-[320px] lg:w-[380px] lg:h-[380px] tech-glow-static rounded-full">
                  <Image
-                    src={profile}
+                    src="https://placehold.co/380x380.png"
                     alt="Felipe Freitas"
                     width={380}
                     height={380}
