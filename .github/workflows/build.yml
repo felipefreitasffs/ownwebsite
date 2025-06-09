@@ -4,7 +4,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - master # Adjusted from master to main, assuming 'main' is your primary branch
+      - main # Adjusted from master, assuming 'main' is your primary branch
 
 jobs:
   build_and_push:
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js and pnpm
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20' # Should match the Node version in Dockerfile
@@ -28,12 +28,10 @@ jobs:
 
       - name: Install dependencies with pnpm
         run: pnpm install --frozen-lockfile
-        # If you don't have a pnpm-lock.yaml, you might want to run `pnpm import && pnpm install --frozen-lockfile`
-        # or simply `pnpm install` if no lockfile is present yet.
         # Ensure pnpm-lock.yaml is committed to your repository.
 
       - name: Build Next.js app (optional pre-check)
-        run: npm run build # This uses the script from package.json, which calls `next build`
+        run: pnpm run build # This uses the script from package.json, which calls `next build`
         env:
           NEXT_TELEMETRY_DISABLED: 1
 
