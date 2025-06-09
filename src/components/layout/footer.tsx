@@ -9,7 +9,7 @@ const socialLinks = [
   },
   { href: 'mailto:felipefreitas.ffs@gmail.com', icon: Mail, label: 'Email' },
   {
-    href: 'https://github.com/felipefreitasffs', // Placeholder, replace with actual link
+    href: 'https://github.com/felipefreitasffs',
     icon: Github,
     label: 'GitHub',
   },
@@ -17,7 +17,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer id="contato" className="w-full py-12 bg-muted/50">
+    <footer id="contato" className="w-full py-12 bg-card border-t border-border/50">
       <div className="container max-w-screen-lg mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tight text-primary mb-8 font-headline">
           Contato
@@ -26,7 +26,7 @@ export default function Footer() {
           {socialLinks.map((link) => (
             <Button key={link.label} variant="outline" size="icon" asChild>
               <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
-                <link.icon className="h-5 w-5" />
+                <link.icon className="h-5 w-5 text-primary hover:text-accent" />
               </a>
             </Button>
           ))}
