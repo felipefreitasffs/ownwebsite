@@ -25,9 +25,10 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Copia os ficheiros da aplicação construída do estágio 'builder'
-# Isso inclui a pasta 'standalone' e a pasta 'public'
+# A pasta 'standalone' já contém tudo que a aplicação precisa para rodar, incluindo os assets de 'src/images'
 COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/public ./public
+# A LINHA ABAIXO FOI REMOVIDA POIS A PASTA 'public' NÃO EXISTE NO SEU PROJETO
+# COPY --from=builder /app/public ./public 
 
 # Expõe a porta que a aplicação vai rodar
 EXPOSE 3000
