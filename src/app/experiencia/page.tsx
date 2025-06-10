@@ -39,7 +39,7 @@ Conduzi a modernização incremental de backend monolítico, migrando funcionali
     role: "Tech Manager / Gerente de Inovação",
     period: "01/2019 - 03/2022",
     description: `Gerenciei equipe de Pesquisa e Desenvolvimento (P&D) focada na criação de novos produtos para a empresa, definindo a estratégia tecnológica e a arquitetura de software.
-Liderei a concepção e implementação de uma plataforma cloud-native (AWS, Kubernetes) para suportar estes new produtos, garantindo alta resiliência e escalabilidade.
+Liderei a concepção e implementação de uma plataforma cloud-native (AWS, Kubernetes) para suportar estes novos produtos, garantindo alta resiliência e escalabilidade.
 Implementei sistemas na nova plataforma baseados em microsserviços, utilizando C# .NET Core, NodeJS, RabbitMQ, MariaDB, VueJS, ReactJS, ReactNative e Docker.
 Estabeleci pipelines de CI/CD (GitLab CI) para automação de build e deploy da nova plataforma, otimizando o ciclo de desenvolvimento.`
   },

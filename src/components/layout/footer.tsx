@@ -20,7 +20,7 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer id="contato" className="w-full py-16 bg-card border-t border-border/30">
-      <div className="container max-w-screen-lg mx-auto text-center px-4">
+      <div className="container max-w-screen-xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <Link href="/" className="inline-flex items-center space-x-2 group mb-8">
           <Code className="h-10 w-10 text-primary group-hover:text-accent transition-colors duration-300" />
           <span className="font-bold text-2xl text-primary group-hover:text-accent transition-colors duration-300 tracking-tight">
