@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, CalendarDays, UserCircle } from 'lucide-react';
 import type { Metadata } from 'next';
+import ReactMarkdown from 'react-markdown';
 
 // IMPORTANT: Replace with your actual deployed domain
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
@@ -173,9 +174,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                        prose-code:bg-card prose-code:text-accent prose-code:px-1.5 prose-code:py-1 prose-code:rounded-md prose-code:font-code prose-code:text-sm
                        prose-pre:bg-card prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:shadow-md prose-pre:my-6
                        "
-            style={{ whiteSpace: 'pre-line' }} 
           >
-            {article.content}
+            <ReactMarkdown>{article.content}</ReactMarkdown>
           </div>
         </article>
       </div>
