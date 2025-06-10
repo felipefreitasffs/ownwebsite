@@ -3,7 +3,45 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { GraduationCap, Award, Briefcase, Code2, Users, Brain, ShieldCheck } from 'lucide-react';
-import profile from '@/images/me.jpg'
+import type { Metadata } from 'next';
+
+// IMPORTANT: Replace with your actual deployed domain if not using environment variable
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
+const profileImageUrl = `${siteUrl}/profile-image-social.png`; // IMPORTANT: Create a specific social share image for the profile and place in /public
+
+export const metadata: Metadata = {
+  title: 'Felipe Freitas - Tech Manager & Software Architect', // Overrides default from layout
+  description: 'Felipe Freitas is a Tech Manager, Engineering Manager, and Software Architect with over 15 years of experience in cloud architecture, microservices, and leading high-performance engineering teams. AWS Certified.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Felipe Freitas - Tech Manager & Software Architect',
+    description: 'Discover the portfolio of Felipe Freitas, showcasing his expertise in tech leadership and software architecture.',
+    url: '/',
+    images: [
+      {
+        url: profileImageUrl, // Use a dedicated image for the homepage social share
+        width: 1200,
+        height: 630,
+        alt: 'Felipe Freitas - Profile',
+      },
+    ],
+    type: 'profile',
+    profile: {
+      firstName: 'Felipe',
+      lastName: 'Freitas',
+      username: 'felipefreitasffs', // Example, replace if applicable
+      gender: 'male',
+    },
+  },
+  twitter: {
+    title: 'Felipe Freitas - Tech Manager & Software Architect',
+    description: 'Discover the portfolio of Felipe Freitas, showcasing his expertise in tech leadership and software architecture.',
+    images: [profileImageUrl],
+  },
+};
+
 
 const skillsData = {
   "Liderança e Gestão": {
@@ -66,7 +104,7 @@ export default function AboutPage() {
             <div className="md:col-span-5 flex justify-center md:justify-start relative">
               <div className="relative w-[280px] h-[280px] md:w-[320px] md:h-[320px] lg:w-[380px] lg:h-[380px] tech-glow-static rounded-full">
                  <Image
-                    src={profile}
+                    src="https://placehold.co/380x380.png"
                     alt="Felipe Freitas"
                     width={380}
                     height={380}

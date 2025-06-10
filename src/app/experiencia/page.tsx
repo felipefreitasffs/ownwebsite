@@ -1,6 +1,25 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase, Building } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Experiência Profissional',
+  description: 'Explore a jornada profissional de Felipe Freitas, detalhando seus papéis desde Desenvolvedor Full Stack até Head de Engenharia de Software e seu impacto em diversos projetos e equipes de tecnologia.',
+  alternates: {
+    canonical: '/experiencia',
+  },
+  openGraph: {
+    title: 'Experiência Profissional | Felipe Freitas',
+    description: 'Detalhes sobre a carreira e as realizações profissionais de Felipe Freitas.',
+    url: '/experiencia',
+    type: 'profile.experience', // Could be 'website' or more specific if available
+  },
+  twitter: {
+    title: 'Experiência Profissional | Felipe Freitas',
+    description: 'Detalhes sobre a carreira e as realizações profissionais de Felipe Freitas.',
+  },
+};
 
 const experiences = [
   {

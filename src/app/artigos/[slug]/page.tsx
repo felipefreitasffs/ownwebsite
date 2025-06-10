@@ -5,6 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, CalendarDays, UserCircle } from 'lucide-react';
+import type { Metadata } from 'next';
+
+// IMPORTANT: Replace with your actual deployed domain
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
 
 type ArticlePageProps = {
   params: {
@@ -19,36 +23,51 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: ArticlePageProps) {
+export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug);
   if (!article) {
     return {
       title: 'Artigo não encontrado',
     };
   }
+
+  const articleUrl = `${siteUrl}/artigos/${article.slug}`;
+  // Assuming cover images are absolute URLs (e.g., from placehold.co or a CDN)
+  // If they can be relative, they need to be prefixed with siteUrl or use metadataBase
+  const imageUrl = article.coverImage.startsWith('http') ? article.coverImage : `${siteUrl}${article.coverImage}`;
+
+
   return {
-    title: `${article.title} | Felipe Freitas`,
+    title: article.title, // Template will add "| Felipe Freitas"
     description: article.summary,
+    keywords: article.title.split(' ').concat(['Felipe Freitas', 'artigo', 'tecnologia', 'engenharia de software']),
+    alternates: {
+      canonical: articleUrl,
+    },
     openGraph: {
       title: article.title,
       description: article.summary,
+      url: articleUrl,
       images: [
         {
-          url: article.coverImage,
-          width: 800,
-          height: 400,
+          url: imageUrl,
+          width: 800, // Adjust if your placeholder images are different
+          height: 400, // Adjust if your placeholder images are different
           alt: article.title,
         },
       ],
       type: 'article',
       authors: ['Felipe Freitas'],
       publishedTime: new Date(article.publishDate).toISOString(),
+      // Potentially add tags/section here if you categorize articles
+      // section: 'Technology',
+      // tags: ['Next.js', 'React', 'Web Development'],
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
       description: article.summary,
-      images: [article.coverImage],
+      images: [imageUrl],
     },
   };
 }
@@ -66,8 +85,40 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     day: 'numeric',
   });
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    image: article.coverImage.startsWith('http') ? article.coverImage : `${siteUrl}${article.coverImage}`,
+    author: {
+      '@type': 'Person',
+      name: 'Felipe Freitas',
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Person', // Or Organization if you have one
+      name: 'Felipe Freitas',
+      // logo: {
+      //   '@type': 'ImageObject',
+      //   url: `${siteUrl}/logo-for-publisher.png`, // IMPORTANT: Add a logo for publisher
+      // },
+    },
+    datePublished: new Date(article.publishDate).toISOString(),
+    dateModified: new Date(article.publishDate).toISOString(), // Assuming publishDate is also last modified for now
+    description: article.summary,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteUrl}/artigos/${article.slug}`,
+    },
+  };
+
 
   return (
+    <>
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
     <section className="py-12 md:py-20 bg-background">
       <div className="container max-w-screen-md mx-auto px-4">
         <div className="mb-10">
@@ -129,5 +180,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </article>
       </div>
     </section>
+    </>
   );
 }

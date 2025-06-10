@@ -3,8 +3,27 @@ import Link from 'next/link';
 import { getArticlesMetadata } from '@/lib/articles';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { FileText, ArrowRight, BookOpen, CalendarDays } from 'lucide-react';
+import { BookOpen, ArrowRight, CalendarDays } from 'lucide-react';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Artigos & Insights',
+  description: 'Uma coleção de artigos e insights por Felipe Freitas sobre engenharia de software, liderança tecnológica, padrões de arquitetura e práticas de desenvolvimento ágil.',
+  alternates: {
+    canonical: '/artigos',
+  },
+  openGraph: {
+    title: 'Artigos & Insights | Felipe Freitas',
+    description: 'Explore artigos sobre desenvolvimento de software, liderança e tecnologia.',
+    url: '/artigos',
+    type: 'website', // Can be considered a blog or collection page
+  },
+  twitter: {
+    title: 'Artigos & Insights | Felipe Freitas',
+    description: 'Explore artigos sobre desenvolvimento de software, liderança e tecnologia.',
+  },
+};
 
 export default async function ArticlesPage() {
   const articlesMeta = await getArticlesMetadata();
@@ -13,9 +32,9 @@ export default async function ArticlesPage() {
     return (
       <section id="artigos" className="py-16 md:py-24 bg-background">
         <div className="container max-w-screen-lg mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-12 font-headline">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-12 font-headline">
             Artigos
-          </h2>
+          </h1>
           <p className="text-muted-foreground text-xl">Nenhum artigo encontrado no momento.</p>
         </div>
       </section>
@@ -25,9 +44,9 @@ export default async function ArticlesPage() {
   return (
     <section id="artigos" className="py-16 md:py-24 bg-background">
       <div className="container max-w-screen-lg mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
           Artigos & Insights
-        </h2>
+        </h1>
         <div className="grid gap-10 md:grid-cols-1">
           {articlesMeta.map((article) => (
             <Link key={article.slug} href={`/artigos/${article.slug}`} passHref className="block group">
