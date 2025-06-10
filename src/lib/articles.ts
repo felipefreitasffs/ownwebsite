@@ -220,8 +220,8 @@ const articlesData: Article[] = [
   },
   {
     slug: 'personal-trainer-ia',
-    title: "Construindo um 'Personal Trainer' com IA (No-Code): Estudo de Caso com Glide e OpenAI",
-    summary: 'Um estudo de caso prático sobre como integrei a API da OpenAI com a plataforma no-code Glideapps para criar um aplicativo funcional.',
+    title: "Construindo um Personal Trainer com IA No-Code Estudo Prático com Gemini, n8n e Prompt Engineering",
+    summary: "Um estudo de caso prático sobre a construção de um personal trainer com IA utilizando Gemini, n8n, e técnicas de prompt engineering para uma solução no-code.",
     content: article3Content,
     coverImage: 'https://placehold.co/800x400.png',
     coverImageHint: 'ai fitness',
