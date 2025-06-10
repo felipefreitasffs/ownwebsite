@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: 'Experiência Profissional | Felipe Freitas',
     description: 'Detalhes sobre a carreira e as realizações profissionais de Felipe Freitas.',
     url: '/experiencia',
-    type: 'profile.experience', // Could be 'website' or more specific if available
+    type: 'profile', // Using 'profile' as it's a profile section
   },
   twitter: {
     title: 'Experiência Profissional | Felipe Freitas',
@@ -24,40 +24,36 @@ export const metadata: Metadata = {
 const experiences = [
   {
     company: "Diel Energia",
-    role: "Head of Software Engineering",
-    period: "Mar 2022 - Dez 2024",
-    description: "Liderei a formação e estruturação de equipes multidisciplinares, gerenciei a reestruturação da plataforma IoT e conduzi a migração de AWS para GCP. Liderei a modernização do sistema de autenticação com Keycloak, estabeleci uma plataforma de observabilidade com Elastic Stack e pipelines de CI/CD com GitHub Actions."
+    role: "Head de Engenharia de Software",
+    period: "03/2022 - 12/2024",
+    description: "Liderei a formação e estruturação de equipes multidisciplinares (Dev, QA, SRE/DevOps), definindo processos ágeis (Scrum) e de engenharia (Gitflow, Code Review, SonarQube, Testes Unitários). Gerenciei a reestruturação arquitetural da plataforma IoT, aumentando a escalabilidade de 5k para 60k dispositivos processando telemetrias em tempo real. Conduzi a migração estratégica da infraestrutura de AWS para Google Cloud Platform (GCP), otimizando custos e utilizando serviços como BigQuery para análise avançada de dados (incluindo migração de VMs, BDs relacionais e DynamoDB). Liderei a modernização do sistema de autenticação com a implementação de Keycloak, substituindo solução proprietária e elevando o nível de segurança e escalabilidade. Implementei plataforma de observabilidade (Elastic Stack), reduzindo o tempo de resposta a incidentes e aumentando a confiabilidade dos sistemas. Estabeleci pipelines de CI/CD (Github Actions), automatizando deploys e acelerando o ciclo de entrega em alinhamento com Produto. Conduzi a modernização incremental de backend monolítico, migrando funcionalidades críticas para novos microsserviços em GKE (Google Kubernetes Engine), aplicando Clean Architecture e SOLID para otimizar performance, manutenibilidade e escalabilidade."
   },
   {
-    company: "Landix Sistemas",
-    role: "Tech Manager",
-    period: "Jan 2019 - Mar 2022",
-    description: "Gerenciei o time de P&D focado na criação de novos produtos. Liderei o design e implementação de uma plataforma cloud-native (AWS, Kubernetes) para suportar novos produtos, com microsserviços usando C#, .NET Core, NodeJS, RabbitMQ, MariaDB, VueJS, ReactJS, ReactNative e Docker."
+    company: "Landix Sistemas", // Assuming "Tech Manager / Gerente de Inovação" refers to Landix
+    role: "Tech Manager / Gerente de Inovação",
+    period: "01/2019 - 03/2022",
+    description: "Gerenciei equipe de Pesquisa e Desenvolvimento (P&D) focada na criação de novos produtos para a empresa, definindo a estratégia tecnológica e a arquitetura de software. Liderei a concepção e implementação de uma plataforma cloud-native (AWS, Kubernetes) para suportar estes new produtos, garantindo alta resiliência e escalabilidade. Implementei sistemas na nova plataforma baseados em microsserviços, utilizando C# .NET Core, NodeJS, RabbitMQ, MariaDB, VueJS, ReactJS, ReactNative e Docker. Estabeleci pipelines de CI/CD (GitLab CI) para automação de build e deploy da nova plataforma, otimizando o ciclo de desenvolvimento."
   },
   {
     company: "Landix Sistemas",
     role: "Tech Leader",
-    period: "Jun 2018 - Jan 2019",
-    description: "Forneci orientação técnica a um time de 15 desenvolvedores. Desenvolvi ferramentas internas, ministrei treinamentos técnicos e participei da seleção de novos engenheiros."
+    period: "06/2018 - 01/2019",
+    description: "Orientei tecnicamente equipe de desenvolvedores no uso de C#, ASP.NET MVC, NodeJS, VueJS, Xamarin e bancos de dados (Oracle, SQL Server, Firebird, MySQL), garantindo a adoção de boas práticas e suportando decisões de arquitetura. Liderei a implementação de funcionalidades complexas, solucionando desafios técnicos críticos. Desenvolvi ferramentas internas, incluindo sistemas para gestão de tarefas e bibliotecas/frameworks internos reusáveis, que otimizaram o fluxo de trabalho da equipe. Elaborei e ministrei treinamentos técnicos, e participei ativamente do processo seletivo (entrevistas técnicas) para contratação de novos engenheiros."
   },
   {
     company: "Landix Sistemas",
-    role: "Full Stack Developer",
-    period: "Jul 2012 - Jun 2018",
-    description: "Desenvolvi soluções full-stack para clientes variados e liderei o projeto do primeiro sistema web da empresa para um cliente multinacional (Coca-Cola), incluindo o rollout internacional."
+    role: "Desenvolvedor Full Stack",
+    period: "07/2012 - 06/2018",
+    description: "Desenvolvi e mantive soluções de software full-stack (web, mobile e desktop) utilizando C#, ASP.NET MVC, NodeJS, VueJS, Xamarin e bancos de dados relacionais (Oracle, SQL Server, etc.) para clientes de portes variados. Concebi, desenvolvi e implantei o sistema web pioneiro da empresa em ASP.NET para cliente multinacional (Coca-Cola), gerenciando o ciclo completo desde as discussões com stakeholders até o rollout e treinamento técnico."
   },
   {
     company: "Landix Sistemas",
-    role: "Intern",
-    period: "Mar 2012 - Jun 2012",
-    description: "Prestei suporte técnico a clientes, gerenciei bancos de dados em larga escala e projetei protótipos com .NET MVC."
+    role: "Estágio em Desenvolvimento",
+    period: "03/2012 - 06/2012",
+    description: "Suporte técnico a clientes, solucionando dúvidas e analisando incidentes. Manutenção e manipulação de bancos de dados robustos, incluindo Oracle, SQL Server, Firebird e SQLite. Criação e implementação de protótipos utilizando tecnologias como C# .NET MVC, JavaScript, JQuery, CSS e Bootstrap."
   },
-  {
-    company: "T&I Telecom",
-    role: "Full Stack Developer",
-    period: "Jul 2010 - Mar 2012",
-    description: "Mantive e desenvolvi sistemas de telecomunicações VoIP usando Asterisk e PHP."
-  },
+  // Previous entry for "T&I Telecom" has been removed as it was not in the new list.
+  // If it was intended to be kept, please let me know.
 ];
 
 export default function ExperiencePage() {
@@ -85,7 +81,7 @@ export default function ExperiencePage() {
                 </div>
               </CardHeader>
               <CardContent className="p-0">
-                <p className="text-foreground/75 leading-relaxed text-justify">{exp.description}</p>
+                <p className="text-foreground/75 leading-relaxed text-justify whitespace-pre-line">{exp.description}</p>
               </CardContent>
             </Card>
           ))}
