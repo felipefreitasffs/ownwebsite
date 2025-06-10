@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 
 // IMPORTANT: Replace with your actual deployed domain if not using environment variable
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
-const profileImageUrl = `${siteUrl}/profile-image-social.png`; // IMPORTANT: Create a specific social share image for the profile and place in /public
+const profileImageUrl = `${siteUrl}/images/me.jpg`; // Updated to reflect local image for social share, assuming it's also used there.
 
 export const metadata: Metadata = {
   title: 'Felipe Freitas - Tech Manager & Software Architect', // Overrides default from layout
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: profileImageUrl, // Use a dedicated image for the homepage social share
-        width: 1200,
-        height: 630,
+        width: 1200, // Adjust if your image has different dimensions
+        height: 630, // Adjust if your image has different dimensions
         alt: 'Felipe Freitas - Profile',
       },
     ],
@@ -104,7 +104,7 @@ export default function AboutPage() {
             <div className="md:col-span-5 flex justify-center md:justify-start relative">
               <div className="relative w-[280px] h-[280px] md:w-[320px] md:h-[320px] lg:w-[380px] lg:h-[380px] tech-glow-static rounded-full">
                  <Image
-                    src="https://placehold.co/380x380.png"
+                    src="/images/me.jpg" // Updated to local image path
                     alt="Felipe Freitas"
                     width={380}
                     height={380}
