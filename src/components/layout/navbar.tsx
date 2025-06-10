@@ -14,7 +14,7 @@ const navItems = [
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/20 bg-background/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 max-w-screen-xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto flex h-20 max-w-screen-xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center space-x-2 group">
           <Code className="h-8 w-8 text-primary group-hover:text-accent transition-colors duration-300" />
           <span className="font-bold text-xl sm:text-2xl text-primary group-hover:text-accent transition-colors duration-300 tracking-tight">
