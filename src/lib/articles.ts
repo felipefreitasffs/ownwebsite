@@ -98,8 +98,8 @@ Um dos aspectos mais interessantes desta abordagem foi a capacidade de instruir 
 Por exemplo, para criar uma nova rotina de treino, a instrução para o Gemini envolvia uma lógica de múltiplos passos. Eu o orientava a primeiro consultar os exercícios existentes na API do Hevy (através de uma função exposta pelo Servidor MCP) para, só então, montar a requisição final para a criação da rotina. A instrução seria conceitualmente assim:
 
 1. Primeiro,**busque a lista completa de exercícios disponíveis** para ter acesso aos nomes e, crucialmente, aos seus respectivos IDs.
-2. Quando um usuário solicitar a criação de uma rotina **encontre o** exercise\_template\_id **correspondente** na lista que você acabou de obter.
-3. Finalmente,**utilize o** exercise\_template\_id **encontrado e este formato de exemplo para construir o payload JSON** da nova rotina:
+2. Quando um usuário solicitar a criação de uma rotina **encontre o** exercise\\_template\\_id **correspondente** na lista que você acabou de obter.
+3. Finalmente,**utilize o** exercise\\_template\\_id **encontrado e este formato de exemplo para construir o payload JSON** da nova rotina:
 
 ![Configuração do nó HTTP Request no n8n, onde o modelo de IA é instruído a gerar dinamicamente o payload JSON para criar uma nova rotina de treino no Hevy.](https://media.licdn.com/dms/image/v2/D4D12AQFyUm4ypHJq9w/article-inline_image-shrink_1500_2232/B4DZc12rZCGkAU-/0/1748955216206?e=1755129600&v=beta&t=omIN4Jw2NjgCJFn7Y_BLhTbEs6f1nYA5nMqQ5kq2cfY)
 
