@@ -7,7 +7,10 @@ import type { Metadata } from 'next';
 
 // IMPORTANT: Replace with your actual deployed domain if not using environment variable
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
-const profileImageUrl = `${siteUrl}/images/me.jpg`; // Updated to reflect local image for social share, assuming it's also used there.
+// Assuming your profile image is in public/images/me.jpg
+const profileImageLocalUrl = '/images/me.jpg';
+const profileImageUrlForSocial = `${siteUrl}${profileImageLocalUrl}`;
+
 
 export const metadata: Metadata = {
   title: 'Felipe Freitas - Tech Manager & Software Architect', // Overrides default from layout
@@ -21,7 +24,7 @@ export const metadata: Metadata = {
     url: '/',
     images: [
       {
-        url: profileImageUrl, // Use a dedicated image for the homepage social share
+        url: profileImageUrlForSocial, // Use a dedicated image for the homepage social share
         width: 1200, // Adjust if your image has different dimensions
         height: 630, // Adjust if your image has different dimensions
         alt: 'Felipe Freitas - Profile',
@@ -38,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     title: 'Felipe Freitas - Tech Manager & Software Architect',
     description: 'Discover the portfolio of Felipe Freitas, showcasing his expertise in tech leadership and software architecture.',
-    images: [profileImageUrl],
+    images: [profileImageUrlForSocial],
   },
 };
 
@@ -99,12 +102,12 @@ export default function AboutPage() {
         <div className="absolute inset-0 opacity-5">
           {/* Subtle background pattern - placeholder, can be SVG or more complex */}
         </div>
-        <div className="container max-w-screen-xl mx-auto px-4 z-10">
+        <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
             <div className="md:col-span-5 flex justify-center md:justify-start relative">
               <div className="relative w-[280px] h-[280px] md:w-[320px] md:h-[320px] lg:w-[380px] lg:h-[380px] tech-glow-static rounded-full">
                  <Image
-                    src="/images/me.jpg" // Updated to local image path
+                    src={profileImageLocalUrl}
                     alt="Felipe Freitas"
                     width={380}
                     height={380}
@@ -131,7 +134,7 @@ export default function AboutPage() {
 
       {/* Skills Section */}
       <section id="habilidades" className="py-16 md:py-24">
-        <div className="container max-w-screen-lg mx-auto px-4">
+        <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
             Principais Habilidades
           </h2>
@@ -166,7 +169,7 @@ export default function AboutPage() {
 
       {/* Education and Certifications Section */}
       <section id="educacao" className="py-16 md:py-24 bg-card/50">
-        <div className="container max-w-screen-lg mx-auto px-4">
+        <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
             Educação e Certificações
           </h2>

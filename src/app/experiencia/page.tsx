@@ -72,7 +72,7 @@ Criação e implementação de protótipos utilizando tecnologias como C# .NET M
 export default function ExperiencePage() {
   return (
     <section id="experiencia" className="py-16 md:py-24 bg-background">
-      <div className="container max-w-screen-lg mx-auto px-4">
+      <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
           Experiência Profissional
         </h2>

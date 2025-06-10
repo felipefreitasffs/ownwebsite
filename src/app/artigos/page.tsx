@@ -31,7 +31,7 @@ export default async function ArticlesPage() {
   if (!articlesMeta || articlesMeta.length === 0) {
     return (
       <section id="artigos" className="py-16 md:py-24 bg-background">
-        <div className="container max-w-screen-lg mx-auto px-4 text-center">
+        <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-12 font-headline">
             Artigos
           </h1>
@@ -43,7 +43,7 @@ export default async function ArticlesPage() {
 
   return (
     <section id="artigos" className="py-16 md:py-24 bg-background">
-      <div className="container max-w-screen-lg mx-auto px-4">
+      <div className="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-primary mb-16 text-center font-headline">
           Artigos & Insights
         </h1>

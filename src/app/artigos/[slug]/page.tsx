@@ -120,7 +120,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
     <section className="py-12 md:py-20 bg-background">
-      <div className="container max-w-screen-md mx-auto px-4">
+      <div className="container max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <Button asChild variant="outline" size="sm" className="border-accent/50 text-accent hover:bg-accent/10 hover:text-accent-foreground tech-glow-hover">
             <Link href="/artigos">
