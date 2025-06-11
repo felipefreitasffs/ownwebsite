@@ -106,12 +106,12 @@ const certifications = [
     url: "https://www.credly.com/badges/4b5a0ea4-de59-4d6c-8309-4b0a51c505a5/linked_in_profile",
   },
   {
-    name: "Software Engineering (Pós-graduação, Faculdade Pitágoras)",
-    url: "https://www.credential.net/2c962005-f344-4ce4-a17c-2c065358016f#acc.vr3btT6j",
+    name: "Programa Head de Tecnologia 5.0 (Strides Tech Community)",
+    // url: "URL_FOR_STRIDES_CERT" // Add URL if available
   },
   {
-    name: "Distributed Systems Architecture (Pós-graduação, PUC Minas)",
-    url: "https://www.credential.net/817a8b7a-0914-404d-bbfd-fbf4bc3ac50b#acc.O25yW0uC",
+    name: "Competências profissionais, emocionais e tecnológicas para tempos de mudança (PUCRS)",
+    // url: "URL_FOR_PUCRS_CERT" // Add URL if available
   },
 ];
 
