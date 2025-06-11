@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 
 // IMPORTANT: Replace with your actual deployed domain
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ffreitas.tech';
 
 type ArticlePageProps = {
   params: {

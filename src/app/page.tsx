@@ -6,7 +6,7 @@ import { GraduationCap, Award, Briefcase, Code2, Users, Brain, ShieldCheck } fro
 import type { Metadata } from 'next';
 
 // IMPORTANT: Replace with your actual deployed domain if not using environment variable
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ffreitas.tech';
 // Assuming your profile image is in public/images/me.jpg
 const profileImageLocalUrl = '/images/me.jpg'; // Path from the 'public' directory
 const profileImageUrlForSocial = `${siteUrl}${profileImageLocalUrl}`;
