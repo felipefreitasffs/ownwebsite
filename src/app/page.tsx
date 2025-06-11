@@ -106,14 +106,6 @@ const certifications = [
     url: "https://www.credly.com/badges/4b5a0ea4-de59-4d6c-8309-4b0a51c505a5/linked_in_profile",
   },
   {
-    name: "Software Engineering (Pós, Faculdade Pitágoras, 2013-2015)",
-    // url will be added if provided
-  },
-  {
-    name: "Distributed Systems Architecture (Pós, PUC-Minas, 2016-2018)",
-    // url will be added if provided
-  },
-  {
     name: "Programa Head de Tecnologia 5.0 (Strides Tech Community)",
     url: "https://www.credential.net/2c962005-f344-4ce4-a17c-2c065358016f#acc.vr3btT6j",
   },
@@ -274,5 +266,7 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
 
     
