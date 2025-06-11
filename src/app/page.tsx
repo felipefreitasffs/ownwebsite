@@ -107,19 +107,19 @@ const certifications = [
   },
   {
     name: "Software Engineering (Pós, Faculdade Pitágoras, 2013-2015)",
-    url: "https://www.credential.net/2c962005-f344-4ce4-a17c-2c065358016f#acc.vr3btT6j",
+    // url will be added if provided
   },
   {
     name: "Distributed Systems Architecture (Pós, PUC-Minas, 2016-2018)",
-    url: "https://www.credential.net/817a8b7a-0914-404d-bbfd-fbf4bc3ac50b#acc.O25yW0uC",
+    // url will be added if provided
   },
   {
     name: "Programa Head de Tecnologia 5.0 (Strides Tech Community)",
-    // url: "URL_FOR_STRIDES_CERT" // Add URL if available
+    url: "https://www.credential.net/2c962005-f344-4ce4-a17c-2c065358016f#acc.vr3btT6j",
   },
   {
     name: "Competências profissionais, emocionais e tecnológicas para tempos de mudança (PUCRS)",
-    // url: "URL_FOR_PUCRS_CERT" // Add URL if available
+    url: "https://www.credential.net/817a8b7a-0914-404d-bbfd-fbf4bc3ac50b#acc.O25yW0uC",
   },
 ];
 
@@ -274,3 +274,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
