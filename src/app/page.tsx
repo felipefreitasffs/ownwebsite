@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { GraduationCap, Award, Briefcase, Code2, Users, Brain, ShieldCheck } from 'lucide-react';
+import { GraduationCap, Award, Briefcase, Code2, Users, Brain, ShieldCheck, Database, CloudCog } from 'lucide-react';
 import type { Metadata } from 'next';
 
 // IMPORTANT: Replace with your actual deployed domain if not using environment variable
@@ -69,15 +69,24 @@ const skillsData = {
   "Linguagens & Frameworks": {
     icon: Brain,
     skills: [
-      "C#", "JavaScript", "Typescript", "SQL", "Python",
-      ".NET Core", "NodeJS", "ReactJS", "ReactNative", "VueJS"
+      "C#", ".NET", "NodeJS", "JavaScript", "TypeScript", "PHP", "SQL", "Python",
+      "ReactJS", "VueJS", "ReactNative"
     ]
   },
-  "DevOps & Observabilidade": {
-    icon: ShieldCheck,
+  "Cloud, DevOps & Ferramentas": {
+    icon: CloudCog,
     skills: [
-      "GitLab CI", "Github Actions", "ArgoCD",
-      "Elastic Stack", "Grafana", "Git", "Gitflow"
+      "AWS", "GCP", "Kubernetes", "Docker", "Terraform", "Linux",
+      "Git", "GitLab CI", "Github Actions", "ArgoCD", "Gitflow",
+      "Elastic Stack", "Prometheus", "Grafana",
+      "RabbitMQ", "Keycloak", "APISix"
+    ]
+  },
+  "Bancos de Dados": {
+    icon: Database,
+    skills: [
+      "SQL Server", "MySQL", "PostgreSQL", "MariaDB", "Oracle",
+      "Redis", "DynamoDB", "BigQuery"
     ]
   }
 };
