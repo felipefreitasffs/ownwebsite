@@ -105,6 +105,14 @@ const certifications = [
     name: "AWS Certified Cloud Practitioner (Fev/2024)",
     url: "https://www.credly.com/badges/4b5a0ea4-de59-4d6c-8309-4b0a51c505a5/linked_in_profile",
   },
+  {
+    name: "Software Engineering (Pós-graduação, Faculdade Pitágoras)",
+    url: "https://www.credential.net/2c962005-f344-4ce4-a17c-2c065358016f#acc.vr3btT6j",
+  },
+  {
+    name: "Distributed Systems Architecture (Pós-graduação, PUC Minas)",
+    url: "https://www.credential.net/817a8b7a-0914-404d-bbfd-fbf4bc3ac50b#acc.O25yW0uC",
+  },
 ];
 
 export default function AboutPage() {
@@ -146,7 +154,7 @@ export default function AboutPage() {
                   className="shrink-0"
                 >
                   <Image
-                    src="/images/aws-certified-cloud-practitioner.png"
+                    src="/images/aws-certified-cloud-practitioner.png" // Ensure this image is in public/images
                     alt="AWS Certified Cloud Practitioner Badge"
                     width={100}
                     height={100}
