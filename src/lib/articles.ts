@@ -23,15 +23,15 @@ export type Article = {
 const articlesStaticData: ArticleStaticMetaData[] = [
   {
     slug: 'separando-deploy-release',
-    coverImage: 'https://placehold.co/800x400.png',
+    coverImage: '/images/deploy.jpeg',
     coverImageHint: 'abstract concept',
-    publishDate: '2023-11-15',
+    publishDate: '2024-10-16',
   },
   {
     slug: 'modernizando-monolitos',
-    coverImage: 'https://placehold.co/800x400.png',
+    coverImage: '/images/strangler.jpeg',
     coverImageHint: 'architecture software',
-    publishDate: '2024-01-20',
+    publishDate: '2024-10-01',
   },
   {
     slug: 'personal-trainer-ia',
