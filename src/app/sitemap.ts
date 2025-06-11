@@ -1,8 +1,9 @@
+
 import type { MetadataRoute } from 'next';
 import { getAllArticles } from '@/lib/articles'; // Assuming this fetches all article slugs and potentially lastModified dates
 
 // IMPORTANT: Replace with your actual deployed domain
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ffreitas.tech';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = await getAllArticles();

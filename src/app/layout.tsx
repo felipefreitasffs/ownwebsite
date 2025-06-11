@@ -1,3 +1,4 @@
+
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -5,7 +6,7 @@ import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
 
 // IMPORTANT: Replace with your actual deployed domain
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ffreitas.tech';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

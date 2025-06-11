@@ -1,7 +1,8 @@
+
 import type { MetadataRoute } from 'next';
 
 // IMPORTANT: Replace with your actual deployed domain
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ffreitas.tech';
 
 export default function robots(): MetadataRoute.Robots {
   return {
