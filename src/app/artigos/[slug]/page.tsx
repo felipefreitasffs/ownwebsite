@@ -8,7 +8,6 @@ import { ArrowLeft, CalendarDays, UserCircle } from 'lucide-react';
 import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 
-// IMPORTANT: Replace with your actual deployed domain
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ffreitas.tech';
 
 type ArticlePageProps = {
@@ -25,7 +24,10 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
-  const article = await getArticleBySlug(params.slug);
+  // Await params as per the error message
+  const resolvedParams = await params;
+  const article = await getArticleBySlug(resolvedParams.slug);
+
   if (!article) {
     return {
       title: 'Artigo não encontrado',
@@ -33,13 +35,10 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 
   const articleUrl = `${siteUrl}/artigos/${article.slug}`;
-  // Assuming cover images are absolute URLs (e.g., from placehold.co or a CDN)
-  // If they can be relative, they need to be prefixed with siteUrl or use metadataBase
   const imageUrl = article.coverImage.startsWith('http') ? article.coverImage : `${siteUrl}${article.coverImage}`;
 
-
   return {
-    title: article.title, // Template will add "| Felipe Freitas"
+    title: article.title,
     description: article.summary,
     keywords: article.title.split(' ').concat(['Felipe Freitas', 'artigo', 'tecnologia', 'engenharia de software']),
     alternates: {
@@ -52,17 +51,14 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       images: [
         {
           url: imageUrl,
-          width: 800, // Adjust if your placeholder images are different
-          height: 400, // Adjust if your placeholder images are different
+          width: 800,
+          height: 400,
           alt: article.title,
         },
       ],
       type: 'article',
       authors: ['Felipe Freitas'],
       publishedTime: new Date(article.publishDate).toISOString(),
-      // Potentially add tags/section here if you categorize articles
-      // section: 'Technology',
-      // tags: ['Next.js', 'React', 'Web Development'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -74,7 +70,9 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
-  const article = await getArticleBySlug(params.slug);
+  // Await params as per the error message
+  const resolvedParams = await params;
+  const article = await getArticleBySlug(resolvedParams.slug);
 
   if (!article) {
     notFound();
@@ -97,22 +95,17 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       url: siteUrl,
     },
     publisher: {
-      '@type': 'Person', // Or Organization if you have one
+      '@type': 'Person',
       name: 'Felipe Freitas',
-      // logo: {
-      //   '@type': 'ImageObject',
-      //   url: `${siteUrl}/logo-for-publisher.png`, // IMPORTANT: Add a logo for publisher
-      // },
     },
     datePublished: new Date(article.publishDate).toISOString(),
-    dateModified: new Date(article.publishDate).toISOString(), // Assuming publishDate is also last modified for now
+    dateModified: new Date(article.publishDate).toISOString(),
     description: article.summary,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${siteUrl}/artigos/${article.slug}`,
     },
   };
-
 
   return (
     <>

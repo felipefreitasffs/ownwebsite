@@ -2,7 +2,6 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import personalia from '/images/personalia.png'
 
 type ArticleStaticMetaData = {
   slug: string;
@@ -21,7 +20,6 @@ export type Article = {
   publishDate: string;
 };
 
-// This array now only holds metadata not present in the markdown frontmatter
 const articlesStaticData: ArticleStaticMetaData[] = [
   {
     slug: 'separando-deploy-release',
@@ -39,16 +37,15 @@ const articlesStaticData: ArticleStaticMetaData[] = [
     slug: 'personal-trainer-ia',
     coverImage: '/images/personalia.png',
     coverImageHint: 'ai fitness',
-    publishDate: '2025-06-5', // Updated publish date as per new content
+    publishDate: '2025-06-5',
   },
 ];
 
-// Helper function to read and parse markdown file
 async function parseMarkdownFile(slug: string): Promise<{ title: string; summary: string; content: string } | null> {
   const filePath = path.join(process.cwd(), 'src', 'articles', `${slug}.md`);
   try {
     const fileContents = fs.readFileSync(filePath, 'utf-8');
-    const { data, content } = matter(fileContents); // data contains frontmatter
+    const { data, content } = matter(fileContents);
     return {
       title: data.title || 'Untitled Article',
       summary: data.summary || '',
@@ -84,7 +81,7 @@ export async function getAllArticles(): Promise<Article[]> {
   const allArticlesPromises = articlesStaticData.map(async (staticData) => {
     const markdownData = await parseMarkdownFile(staticData.slug);
     if (!markdownData) {
-      return null; // Will be filtered out
+      return null;
     }
     return {
       ...staticData,
@@ -105,13 +102,13 @@ export async function getArticlesMetadata(): Promise<Omit<Article, 'content'>[]>
   const allMetadataPromises = articlesStaticData.map(async (staticData) => {
     const markdownData = await parseMarkdownFile(staticData.slug);
     if (!markdownData) {
-      return null; // Will be filtered out
+      return null;
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { content, ...metaFromMarkdown } = markdownData;
     return {
       ...staticData,
-      ...metaFromMarkdown, // This includes title and summary from frontmatter
+      ...metaFromMarkdown,
     };
   });
 
