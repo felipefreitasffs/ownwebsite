@@ -2,8 +2,9 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { GraduationCap, Award, Briefcase, Code2, Users, Brain, ShieldCheck, Database, CloudCog } from 'lucide-react';
+import { GraduationCap, Award, Briefcase, Code2, Users, Brain, ShieldCheck, Database, CloudCog, Link as LinkIcon } from 'lucide-react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 // IMPORTANT: Replace with your actual deployed domain if not using environment variable
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ffreitas.tech';
@@ -100,7 +101,10 @@ const academicFormations = [
 ];
 
 const certifications = [
-  "AWS Certified Cloud Practitioner (Fev/2024)",
+  {
+    name: "AWS Certified Cloud Practitioner (Fev/2024)",
+    url: "https://www.credly.com/badges/4b5a0ea4-de59-4d6c-8309-4b0a51c505a5/linked_in_profile"
+  },
 ];
 
 export default function AboutPage() {
@@ -207,10 +211,22 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="p-0">
                 <ul className="space-y-4 list-none text-foreground/80">
-                  {certifications.map((certification, index) => (
+                  {certifications.map((cert, index) => (
                     <li key={index} className="flex items-start text-lg">
                       <Award className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" />
-                      <span>{certification}</span>
+                      {cert.url ? (
+                        <Link
+                          href={cert.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center hover:text-accent hover:underline"
+                        >
+                          {cert.name}
+                          <LinkIcon className="h-4 w-4 ml-1.5 opacity-70" />
+                        </Link>
+                      ) : (
+                        <span>{cert.name}</span>
+                      )}
                     </li>
                   ))}
                 </ul>
