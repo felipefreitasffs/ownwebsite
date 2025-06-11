@@ -103,7 +103,9 @@ const academicFormations = [
 const certifications = [
   {
     name: "AWS Certified Cloud Practitioner (Fev/2024)",
-    url: "https://www.credly.com/badges/4b5a0ea4-de59-4d6c-8309-4b0a51c505a5/linked_in_profile"
+    url: "https://www.credly.com/badges/4b5a0ea4-de59-4d6c-8309-4b0a51c505a5/linked_in_profile",
+    badgeImage: "/images/aws-certified-cloud-practitioner-badge.png", // User needs to add this image
+    badgeAlt: "AWS Certified Cloud Practitioner Badge"
   },
 ];
 
@@ -212,20 +214,33 @@ export default function AboutPage() {
               <CardContent className="p-0">
                 <ul className="space-y-4 list-none text-foreground/80">
                   {certifications.map((cert, index) => (
-                    <li key={index} className="flex items-start text-lg">
-                      <Award className="h-6 w-6 text-accent mr-3 mt-1 shrink-0" />
-                      {cert.url ? (
-                        <Link
-                          href={cert.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center hover:text-accent hover:underline"
-                        >
-                          {cert.name}
-                          <LinkIcon className="h-4 w-4 ml-1.5 opacity-70" />
+                    <li key={index} className="flex items-center text-lg">
+                      <Award className="h-6 w-6 text-accent mr-3 shrink-0" />
+                      <div className="flex-grow mr-2">
+                        {cert.url ? (
+                          <Link
+                            href={cert.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center hover:text-accent hover:underline group"
+                          >
+                            <span>{cert.name}</span>
+                            <LinkIcon className="h-4 w-4 ml-1.5 opacity-70 group-hover:opacity-100" />
+                          </Link>
+                        ) : (
+                          <span>{cert.name}</span>
+                        )}
+                      </div>
+                      {cert.badgeImage && cert.url && (
+                        <Link href={cert.url} target="_blank" rel="noopener noreferrer" aria-label={`View ${cert.name} badge details`} className="shrink-0">
+                          <Image
+                            src={cert.badgeImage}
+                            alt={cert.badgeAlt || `${cert.name} Badge`}
+                            width={40}
+                            height={40}
+                            data-ai-hint="aws certification badge"
+                          />
                         </Link>
-                      ) : (
-                        <span>{cert.name}</span>
                       )}
                     </li>
                   ))}
