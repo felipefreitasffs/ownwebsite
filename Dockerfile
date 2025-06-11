@@ -29,8 +29,10 @@
   COPY --from=builder /app/.next/standalone ./
   
   # Copia os ficheiros estáticos (CSS, JS, etc.)
-  # ESTA É A LINHA QUE CORRIGE O SEU PROBLEMA
   COPY --from=builder /app/.next/static ./.next/static
+
+  # Copia a sua pasta 'public' (com as imagens) para dentro da imagem final.
+  COPY --from=builder /app/public ./public
   
   # Expõe a porta em que o servidor Next.js irá rodar
   EXPOSE 3000
