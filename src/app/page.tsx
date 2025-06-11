@@ -104,8 +104,6 @@ const certifications = [
   {
     name: "AWS Certified Cloud Practitioner (Fev/2024)",
     url: "https://www.credly.com/badges/4b5a0ea4-de59-4d6c-8309-4b0a51c505a5/linked_in_profile",
-    badgeImage: "/images/aws-certified-cloud-practitioner-badge.png", // User needs to add this image
-    badgeAlt: "AWS Certified Cloud Practitioner Badge"
   },
 ];
 
@@ -136,9 +134,27 @@ export default function AboutPage() {
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-primary mb-6 font-headline leading-tight">
                 Felipe Freitas
               </h1>
-              <p className="text-xl md:text-2xl lg:text-3xl text-foreground/80 font-medium mb-8 leading-relaxed">
-                Tech Manager | Engineering Manager | Software Architect | Senior Software Engineer | AWS Certified
-              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-x-4 gap-y-3 mb-8">
+                <p className="text-xl md:text-2xl lg:text-3xl text-foreground/80 font-medium leading-relaxed text-center md:text-left">
+                  Tech Manager | Engineering Manager | Software Architect | Senior Software Engineer | AWS Certified
+                </p>
+                <Link
+                  href="https://www.credly.com/badges/4b5a0ea4-de59-4d6c-8309-4b0a51c505a5/linked_in_profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="AWS Certified Cloud Practitioner Badge"
+                  className="shrink-0"
+                >
+                  <Image
+                    src="/images/aws-certified-cloud-practitioner.png"
+                    alt="AWS Certified Cloud Practitioner Badge"
+                    width={100}
+                    height={100}
+                    className="tech-glow-hover rounded-md"
+                    data-ai-hint="aws certification badge"
+                  />
+                </Link>
+              </div>
                <p className="text-lg text-foreground/70 max-w-xl mx-auto md:mx-0 leading-relaxed text-justify">
                 Líder de Engenharia de Software com mais de 15 anos de experiência, combinando forte background técnico em arquitetura de software (Nuvem AWS/GCP, Microsserviços, Sistemas Distribuídos) com expertise em formar, contratar, mentorar e escalar equipes de engenharia de alta performance. Histórico comprovado em definir estratégias tecnológicas e padrões arquiteturais, otimizar a execução e entrega de projetos (CI/CD, Agile), fomentar cultura de inovação e melhoria contínua, e garantir o alinhamento entre tecnologia e objetivos de negócio.
               </p>
@@ -231,17 +247,6 @@ export default function AboutPage() {
                           <span>{cert.name}</span>
                         )}
                       </div>
-                      {cert.badgeImage && cert.url && (
-                        <Link href={cert.url} target="_blank" rel="noopener noreferrer" aria-label={`View ${cert.name} badge details`} className="shrink-0">
-                          <Image
-                            src={cert.badgeImage}
-                            alt={cert.badgeAlt || `${cert.name} Badge`}
-                            width={40}
-                            height={40}
-                            data-ai-hint="aws certification badge"
-                          />
-                        </Link>
-                      )}
                     </li>
                   ))}
                 </ul>
