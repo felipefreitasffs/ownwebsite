@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import personalia from '/images/personalia.png'
 
 type ArticleStaticMetaData = {
   slug: string;
@@ -36,9 +37,9 @@ const articlesStaticData: ArticleStaticMetaData[] = [
   },
   {
     slug: 'personal-trainer-ia',
-    coverImage: 'https://placehold.co/800x400.png',
+    coverImage: '/images/personalia.png',
     coverImageHint: 'ai fitness',
-    publishDate: '2024-07-25', // Updated publish date as per new content
+    publishDate: '2025-06-5', // Updated publish date as per new content
   },
 ];
 
